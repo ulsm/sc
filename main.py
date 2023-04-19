@@ -28,19 +28,19 @@ def get_temperatures():
         reader = csv.DictReader(csvfile)
         max_tmps = [row for row in reader]
 
-    max_temperature = float("-inf")
+    max_temp = float("-inf")
     max_date = None
     for row in max_tmps:
         temperature = float(row["temperature"])
-        if temperature > max_temperature:
-            max_temperature = temperature
+        if temperature > max_temp:
+            max_temp = temperature
             max_date = row["date"]
-    max_temperature = {
+    max_temp = {
         "max_date": max_date,
-        "max_temperature": round(max_temperature, 2),
+        "max_temperature": round(max_temp, 2),
     }
 
-    return average_temps, max_temperature
+    return average_temps, max_temp
 
 
 def get_average_temperatures():
