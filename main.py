@@ -3,13 +3,13 @@ from datetime import datetime
 
 
 def get_temperatures():
-    input_for_average_temperatures = None
+    avg_tmps = None
     with open("input.csv", "r") as csvfile:
         reader = csv.DictReader(csvfile)
-        input_for_average_temperatures = [row for row in reader]
+        avg_tmps = [row for row in reader]
 
     average_temps = {}
-    for row in input_for_average_temperatures:
+    for row in avg_tmps:
         date_str = row["date"]
         temp = float(row["temperature"])
         date = datetime.strptime(date_str, "%Y-%m-%d").date()
@@ -23,14 +23,14 @@ def get_temperatures():
         result[date.strftime("%Y-%m-%d")] = round(values["sum"] / values["count"], 2)
     average_temps = result
 
-    input_for_max_temperatures = None
+    max_tmps = None
     with open("input.csv", "r") as csvfile:
         reader = csv.DictReader(csvfile)
-        input_for_max_temperatures = [row for row in reader]
+        max_tmps = [row for row in reader]
 
     max_temperature = float("-inf")
     max_date = None
-    for row in input_for_max_temperatures:
+    for row in max_tmps:
         temperature = float(row["temperature"])
         if temperature > max_temperature:
             max_temperature = temperature
