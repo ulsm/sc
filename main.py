@@ -4,8 +4,8 @@ from datetime import datetime
 
 def get_temperatures():
     avg_tmps = None
-    with open("input.csv", "r") as csvfile:
-        reader = csv.DictReader(csvfile)
+    with open("input.csv", "r") as f:
+        reader = csv.DictReader(f)
         avg_tmps = [row for row in reader]
 
     average_temps = {}
@@ -24,8 +24,8 @@ def get_temperatures():
     average_temps = result
 
     max_tmps = None
-    with open("input.csv", "r") as csvfile:
-        reader = csv.DictReader(csvfile)
+    with open("input.csv", "r") as f:
+        reader = csv.DictReader(f)
         max_tmps = [row for row in reader]
 
     max_temp = float("-inf")
